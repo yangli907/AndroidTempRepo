@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello World, HelloPreferences!</string>
+    <string name="app_name">Preferences</string>
+    <string name="show">Show Preference</string>
+    <string name="add">Add Preference</string>
+</resources>

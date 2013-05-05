@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:weightSum="1">
+<TextView  
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:text="@string/hello"
+    />
+
+<TextView
+    android:id="@+id/textView2"
+    android:layout_width="172dp"
+    android:layout_height="wrap_content"
+    android:text="@string/altitude" >
+</TextView>
+
+<TextView
+    android:id="@+id/textView3"
+    android:layout_width="170dp"
+    android:layout_height="wrap_content"
+    android:text="@string/latitude" >
+</TextView>
+
+<TextView
+    android:id="@+id/textView4"
+    android:layout_width="190dp"
+    android:layout_height="wrap_content"
+    android:text="@string/longtitude" >
+</TextView>
+
+<Button android:id="@+id/button1" android:text="@string/refresh" android:layout_height="wrap_content" android:layout_width="130dp" android:onClick="getLocation"></Button>
+
+<com.google.android.maps.MapView
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:id="@+id/map_view"
+  android:layout_width="fill_parent" 
+  android:layout_height="fill_parent"
+  android:clickable="true" 
+  android:enabled="true" 
+  android:apiKey="0rpc2dv1_54i0efy91nubSj8S_Po3aqDEcHWgXg" />
+    
+</LinearLayout>

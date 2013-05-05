@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello World, GetLocationActivity!</string>
+    <string name="app_name">GetLocation</string>
+    <string name="localetag">Show My Location</string>
+    <string name="altitude">altitude</string>
+    <string name="latitude">Latitude</string>
+    <string name="refresh">Refresh</string>
+    <string name="longtitude">Longtitude</string>
+</resources>
