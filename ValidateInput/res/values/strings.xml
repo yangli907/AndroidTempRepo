@@ -1,0 +1,14 @@
+<resources>
+
+    <string name="app_name">ValidateInput</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="v1">a</string>
+    <string name="v2">b</string>
+    <string name="sum">sum</string>
+    <string name="add">+</string>
+    <string name="equal">=</string>
+    <string name="run">Run!</string>
+
+</resources>

@@ -1,0 +1,268 @@
+package com.yangli907.convertor;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.Spinner;
+
+import com.memetix.mst.language.Language;
+import com.memetix.mst.translate.Translate;
+
+public class DrawWord extends Activity {
+	private EditText wordField;
+	private String[] entries;
+	private ArrayList<String> list = new ArrayList<String>();
+	private ArrayAdapter<String> adapter;
+	private Spinner charNumber;
+	private int selectedLength;
+	private EditText et;
+	private ArrayList<String> permList = new ArrayList<String>();
+	private HashMap<String, String> resultMap = new HashMap<String,String>();
+	private HashSet<String> dictMap = new HashSet<String>();
+	public String getTranslate(String word){
+		//Translate.setKey("C09642C116FDE115D00BA1FA150252B17A41984B");
+		Translate.setKey("MzHQCBGJtBOOGAQW5u2qv62oHzIUoMqQCVfbaYhNFTo=");
+		String translatedText = "";
+		try {
+			translatedText = Translate.execute(word, Language.ENGLISH, Language.CHINESE_SIMPLIFIED);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return translatedText;
+		
+	}
+	 @Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.guessword);
+		wordField = (EditText)findViewById(R.id.wordField);
+		charNumber = (Spinner)findViewById(R.id.charNumber);
+		et = (EditText)findViewById(R.id.editText1);
+		//et.setBackgroundResource(getResources().getColor(R.color.black));
+		//et.setTextColor(Color.WHITE);
+		String a = "";
+		fillList();
+	}
+
+	public InputStream openDict(String path){
+		InputStream is = null;
+		try {
+			is = this.getAssets().open(path);
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+		return is;
+	}
+	
+	public void scanDict(InputStream is, String str, int size){
+		BufferedReader reader;
+		try {
+			reader = new BufferedReader(new InputStreamReader(is));
+			String line = null;
+			String sorted_str = null;
+			sorted_str = sort(str.toCharArray());
+			
+			while( (line = reader.readLine()) != null )
+			{
+				if(line.length()==size)
+					if(checkComSeq(sorted_str,sort(line.toCharArray())))
+						dictMap.add(line);
+			}
+			for (String elem : dictMap){ 
+				String means = getTranslate(elem);
+				if(!means.equals(elem))
+					resultMap.put(elem,means);
+			}
+			StringBuilder builder = composeResultArray();
+			et.setText(builder);
+			//Toast.makeText(this, builder, Toast.LENGTH_LONG).show();
+			resultMap.clear();
+		} 
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+	}	
+	
+	public boolean checkComSeq(String str, String substr){
+		String lcs = lcs(str,substr);
+		if(substr.equals(lcs))
+			return true;
+		return false;
+	}
+	public String lcs(String a,String b) {
+	      String x;
+	      String y;
+	      int alen=a.length();
+	      int blen=b.length();
+	      if (alen==0 || blen==0) {
+	        return "";
+	      }
+	      else if (a.charAt(alen-1)==b.charAt(blen-1)) {
+	        return lcs(a.substring(0,alen-1),b.substring(0,blen-1))+ a.charAt(alen-1);
+	      }
+	      else {
+	        x=lcs(a,b.substring(0,blen-1));
+	        y=lcs(a.substring(0,alen-1),b);
+	      }
+	      return (x.length()>y.length()) ? x : y;
+	  }
+
+	public boolean lookupDict(InputStream is, String str){
+		BufferedReader reader;
+		try {
+			reader = new BufferedReader(new InputStreamReader(is));
+			String line = null;
+			while( (line = reader.readLine()) != null )
+			{  
+				if(str.equals(line))
+					return true;
+			}
+		} 
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
+	public StringBuilder composeResultArray(){
+		StringBuilder builder = new StringBuilder();
+		Iterator iter = resultMap.entrySet().iterator();
+		while (iter.hasNext()) {
+		    HashMap.Entry entry = (HashMap.Entry) iter.next();
+		    Object key = entry.getKey();
+		    Object val = entry.getValue();
+		    builder.append("" + key + ": " + val + "\n");
+		} 
+		return builder;
+	}
+	public void getResult(View view){
+		String input = wordField.getText().toString();
+		InputStream is = openDict("dict.txt");
+		scanDict(is,input, selectedLength);
+/*		perm(input.toCharArray(),0,input.length()-1);
+		for (String str : permList){ 
+			InputStream is = openDict("dict.txt");
+			scanDict(is,str, 3);
+			//String meaning = getTranslate(str);
+			if(scanDict(is,str, 3))
+				resultMap.put(str,getTranslate(str));
+		}
+		StringBuilder builder = composeResultArray();
+		Toast.makeText(this, builder, Toast.LENGTH_LONG).show();
+		resultMap.clear();*/
+	}
+	
+	public void swap(char[] buf, int pos1, int pos2){
+		char temp = buf[pos1];
+		buf[pos1] = buf[pos2];
+		buf[pos2] = temp;
+	}
+	
+    public void perm(char[] buf,int start,int end){  
+        if(start==end){//当只要求对数组中一个字母进行全排列时，只要就按该数组输出即可  
+        	String temp = "";
+            for(int i=0;i<=end;i++){  
+                temp += buf[i];  
+            }  
+            permList.add(temp);
+        }  
+        else{//多个字母全排列  
+            for(int i=start;i<=end;i++){  
+                swap(buf,start,i);  //交换数组第一个元素与后续的元素  
+                perm(buf,start+1,end);//后续元素递归全排列  
+                swap(buf,start,i);//将交换后的数组还原  
+            }  
+        }  
+    }
+	
+	public ArrayList<String> fillList(){
+		entries = getResources().getStringArray(R.array.charNumber);
+        for(int i=0; i<entries.length; i++){
+        	list.add(entries[i]);
+        }
+       adapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,list);
+       adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+       charNumber.setAdapter(adapter);
+	   charNumber.setOnItemSelectedListener(
+	    		   new OnItemSelectedListener() { 
+					public void onNothingSelected(AdapterView<?> arg0) {
+						// TODO Auto-generated method stub
+						selectedLength = 3;
+					}
+
+					public void onItemSelected(AdapterView<?> arg0, View arg1,
+							int arg2, long arg3) {
+						// TODO Auto-generated method stub
+						selectedLength = Integer.valueOf(entries[arg2]);
+					}
+	    		}
+	       );
+		return list;
+	}
+	
+	public String sort(char[] str) {
+		// Check for empty or null array
+		if (str ==null || str.length==0){
+			return "";
+		}
+		int length = str.length;
+		quicksort(str, 0, length - 1);
+		String cstr = new String(str);
+		return cstr;
+	}
+
+	private void quicksort(char[] str, int low, int high) {
+		int i = low, j = high;
+		// Get the pivot element from the middle of the list
+		int pivot = str[low + (high-low)/2];
+
+		// Divide into two lists
+		while (i <= j) {
+			// If the current value from the left list is smaller then the pivot
+			// element then get the next element from the left list
+			while (str[i] < pivot) {
+				i++;
+			}
+			// If the current value from the right list is larger then the pivot
+			// element then get the next element from the right list
+			while (str[j] > pivot) {
+				j--;
+			}
+
+			// If we have found a values in the left list which is larger then
+			// the pivot element and if we have found a value in the right list
+			// which is smaller then the pivot element then we exchange the
+			// values.
+			// As we are done we can increase i and j
+			if (i <= j) {
+				exchange(str, i, j);
+				i++;
+				j--;
+			}
+		}
+		// Recursion
+		if (low < j)
+			quicksort(str, low, j);
+		if (i < high)
+			quicksort(str, i, high);
+	}
+
+	private void exchange(char[] arr, int i, int j) {
+		char temp = arr[i];
+		arr[i] = arr[j];
+		arr[j] = temp;
+	}
+}

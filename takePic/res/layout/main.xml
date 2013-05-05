@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/previewHolder"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="horizontal" >
+
+        <FrameLayout
+            android:id="@+id/preview"
+            android:layout_width="260dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1.29">
+        </FrameLayout>
+
+        <LinearLayout
+            android:id="@+id/funcList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <ImageButton
+                android:id="@+id/galary"
+                android:layout_width="46dp"
+                android:layout_height="46dp"
+                android:background="@null"
+                android:onClick="openGallery"
+                android:padding="0dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/galary"
+                android:visibility="visible" />
+
+            <ImageButton
+                android:id="@+id/zoomIn"
+                android:layout_width="46dp"
+                android:layout_height="46dp"
+                android:onClick="zoomIn"
+                android:padding="0dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/zoomin"
+                android:background="@null"
+                android:visibility="visible" />
+            
+            <ImageButton
+                android:id="@+id/zoomOut"
+                android:layout_width="46dp"
+                android:layout_height="46dp"
+                android:onClick="zoomOut"
+                android:padding="0dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/zoomout"
+                android:background="@null"
+                android:visibility="visible" />
+
+            <ImageButton
+                android:id="@+id/shutter"
+                android:layout_width="46dp"
+                android:layout_height="46dp"
+                android:background="@null"
+                android:onClick="takePicture"
+                android:paddingBottom="0dp"
+                android:paddingTop="0dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/shutter_small"
+                android:visibility="visible" />
+            
+            <ImageButton
+                android:id="@+id/flash"
+                android:layout_width="46dp"
+                android:layout_height="46dp"
+                android:onClick="switchFlash"
+                android:padding="0dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/lightoff"
+                android:background="@null"
+                android:visibility="visible" />
+
+            <ImageButton
+                android:id="@+id/micBtn"
+                android:layout_width="46dp"
+                android:layout_height="46dp"
+                android:background="@null"
+                android:onClick="startVoice"
+                android:padding="0dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/mic_icon" />
+            
+            <ImageButton
+                android:id="@+id/help"
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                android:onClick="openHelp"
+                android:padding="0dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/help"
+                android:background="@null" 
+                android:visibility="visible" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

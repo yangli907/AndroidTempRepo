@@ -1,0 +1,155 @@
+package com.yangli907.tipsCalc;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
+
+public class TipsCalcActivity extends Activity {
+	private double amount = 0.0;
+	private double tips = 0.0;
+	private double rate = 0.06;
+	private double percetage = 0.15;
+	private int inputNum = 0;
+	public double getAmount() {
+		return amount;
+	}
+
+	public void setAmount(double amount) {
+		this.amount = amount;
+	}
+
+	public int getInputNum() {
+		return inputNum;
+	}
+
+	public void setInputNum(int inputNum) {
+		this.inputNum = inputNum;
+	}
+
+    /** Called when the activity is first created. */
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.main);
+    }
+    
+    public void onEnter(View view){
+    	setTips(calcTips());
+    	Toast.makeText(this, String.valueOf(getTips()), Toast.LENGTH_SHORT).show();
+    	/*Intent intent = new Intent(TipsCalcActivity.this, SetParameter.class);
+    	startActivity(intent);*/
+    }
+    
+    public void onClickNum(View view){
+    	switch(view.getId()){
+    	case(R.id.button1):
+    		updateDisplayNum(1);
+    		break;
+    	case(R.id.button2):
+    		updateDisplayNum(2);
+			break;
+    	case(R.id.button3):
+    		updateDisplayNum(3);
+    		break;
+    	case(R.id.button4):
+    		updateDisplayNum(4);
+			break;
+    	case(R.id.button5):
+    		updateDisplayNum(5);
+    		break;
+    	case(R.id.button6):
+    		updateDisplayNum(6);
+			break;
+    	case(R.id.button7):
+    		updateDisplayNum(7);
+    		break;
+    	case(R.id.button8):
+    		updateDisplayNum(8);
+			break;
+    	case(R.id.button9):
+    		updateDisplayNum(9);
+    		break;
+    	case(R.id.button10):
+    		updateDisplayNum(0);
+			break;
+    	case(R.id.buttonClear):
+    		setAmount(0);
+    		clearDisplayNum();
+		default:
+			updateDisplayNum(0);
+    		break;
+    	}
+    }
+    
+    public void updateDisplayNum(int inputNum){
+    	setInputNum(inputNum);
+    	setAmount((getAmount()*10+getInputNum()));
+    	TextView amountText = (TextView)findViewById(R.id.amountText);
+    	if(getAmount()%10==0)
+    		amountText.setText(String.valueOf(getAmount()/100)+'0');
+    	else 
+    		amountText.setText(String.valueOf(getAmount()/100));
+    }
+    
+    public void clearDisplayNum(){
+    	TextView amountText = (TextView)findViewById(R.id.amountText);
+    	amountText.setText(String.valueOf(0.0));
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+    	menu.add(Menu.NONE, Menu.FIRST + 1 , 2, "Preference");
+    	menu.add(Menu.NONE, Menu.FIRST + 2 , 5, "Quit");
+    	// TODO Auto-generated method stub
+    	return super.onCreateOptionsMenu(menu);
+    }
+    
+    public double calcTips()
+    {
+    	double tipsAmount = (getAmount()/100/(1+getRate()))*getPercetage(); 
+		return tipsAmount;
+    	
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+    	switch(item.getItemId()){
+    		case Menu.FIRST + 1:
+    			Intent intent = new Intent(TipsCalcActivity.this, UserPreference.class);
+    			startActivity(intent);
+    			break;
+    		case Menu.FIRST + 2:
+    			System.exit(1);
+    			break;
+    	}
+    			// TODO Auto-generated method stub
+    	return super.onOptionsItemSelected(item);
+    }
+
+	public double getTips() {
+		return tips;
+	}
+
+	public void setTips(double tips) {
+		this.tips = tips;
+	}
+
+	public double getRate() {
+		return rate;
+	}
+
+	public void setRate(double rate) {
+		this.rate = rate;
+	}
+
+	public double getPercetage() {
+		return percetage;
+	}
+
+	public void setPercetage(double percetage) {
+		this.percetage = percetage;
+	}
+}

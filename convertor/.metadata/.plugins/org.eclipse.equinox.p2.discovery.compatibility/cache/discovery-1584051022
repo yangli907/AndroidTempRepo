@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<directory xmlns="http://www.eclipse.org/mylyn/discovery/directory/">
+	<entry url="http://tools.ext.nokia.com/pulsar/com.nokia.pulsar.sdks_1.0.0.jar" permitCategories="true" />
+        <entry url="http://www.sonyericsson.com/pulsar/semcsdk_1.0.0.jar" permitCategories="true" />
+	<!-- entry url="http://studio-javame.motodevupdate.com/pulsar/sdk_discovery/com.motorola.pulsar.javame.sdks_1.0.0.jar" permitCategories="true" / -->
+</directory>

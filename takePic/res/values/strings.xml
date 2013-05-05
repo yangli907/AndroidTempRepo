@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<resources>
+    <string name="hello">Hello World, TakePicActivity!</string>
+    <string name="app_name">CheeseCam</string>
+<color name="transparent">#80000000</color>
+<string name="shutterDesc">Voice Command</string>
+<string name="shutterHelp">\n 
+Take Picture: Say \'cheese\' or \'take a picture\'. \n
+Zoom In: Say \'Bigger\'. \n
+Zoom Out: Say \'Smaller\'.
+</string>
+<string name="closeHelp">Close</string>
+<string name="email">Send feedback!</string>
+<string name="speechWarning">Voice Component Not Found</string>
+<string name="speechNotFound">Failed to start voice control. \n Please download Google Voice Search components.</string>
+<string name="installSpeech">Install Voice Command</string>
+</resources>

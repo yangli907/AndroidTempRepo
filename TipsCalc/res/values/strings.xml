@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<resources>
+
+    <string name="hello">Hello World, TipsCalcActivity!</string>
+    <string name="app_name">TipsCalc</string>
+    <string name="good">Good</string>
+    <string name="savePref">Save</string>
+    <string name="num1">1</string>
+    <string name="num2">2</string>
+    <string name="num3">3</string>
+    <string name="num4">4</string>
+    <string name="num5">5</string>
+    <string name="num6">6</string>
+    <string name="num7">7</string>
+    <string name="num8">8</string>
+    <string name="num9">9</string>
+	<string name="num0">0</string>
+	<string name="C">Clear</string>
+    <string name="enter">Enter</string>
+    <string name="initAmt">0.00</string>
+    <string name="taxValue">6</string>
+    <string name="percentage">%</string>
+    <string name="upTax">U</string>
+    <string name="downTax">D</string>
+    <string name="defaultRate">15</string>
+    <string name="split">Split by</string>
+    <string name="person">person(s)</string>
+    <string name="upPerson">U</string>
+    
+    <string name="persons">persons</string>
+    
+    <string name="tax">Tax</string>
+    
+    <string name="tipsRate">Tips</string>
+    
+    <string name="subtotal">Subtotal</string>
+    
+    <string name="tipsAmount">Tips
+</string>
+    
+    <string name="totalDue">Total</string>
+    
+    <string name="zero">0.00</string>
+    
+    <string name="eachDue">Each Person</string>
+    
+    <string name="moreOption">Show Options</string>
+    
+    <string name="dollor">$</string>
+</resources>

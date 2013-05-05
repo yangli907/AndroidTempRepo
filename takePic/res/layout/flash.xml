@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/container"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/flash_layout"
+    android:orientation="vertical"
+    android:padding="1dip" >
+
+    <LinearLayout
+        android:id="@+id/flashGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@null" >
+
+        <ImageButton
+            android:id="@+id/menuItem1"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:onClick="openFlash"
+            android:padding="1dp"
+            android:background="@null"
+            android:scaleType="fitXY"
+            android:src="@drawable/lighton" />
+
+        <ImageButton
+            android:id="@+id/menuItem2"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:onClick="closeFlash"
+            android:padding="1dp"
+            android:scaleType="fitXY"
+            android:background="@null"
+            android:src="@drawable/lightoff" />
+    </LinearLayout>
+
+</LinearLayout>

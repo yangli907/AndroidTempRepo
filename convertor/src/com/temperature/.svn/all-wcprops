@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/2/trunk/convertor/src/com/temperature
+END
+DrawWord.java
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/2/trunk/convertor/src/com/temperature/DrawWord.java
+END
+TipsCalc.java
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/2/trunk/convertor/src/com/temperature/TipsCalc.java
+END
+DataBaseHelper.java
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/2/trunk/convertor/src/com/temperature/DataBaseHelper.java
+END
+OnStart.java
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/2/trunk/convertor/src/com/temperature/OnStart.java
+END
+TemperatureConvertorActivity.java
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/2/trunk/convertor/src/com/temperature/TemperatureConvertorActivity.java
+END

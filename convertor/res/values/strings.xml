@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<resources>
+    <string name="hello">Hello World, TemperatureConvertorActivity!</string>
+    <string name="app_name">Daily calculation widget</string>
+	<color name="myColor">#3399CC</color>
+	<color name="white">#ffffffff</color>
+    <color name="black">#ff000000</color>
+	<string name="celsius">to Celsius</string>
+    <string name="fahrenheit">to Fahrenheit</string>
+    <string name="myClickHandler">myClickHandler</string>
+    <string name="calc">Calculate</string>
+    <string name="Temp">TemperatureConvert</string>
+    <string name="TipsCalcBtnTxt">Tips Calculation</string>
+    <string name="taxlabel">Tax Rate</string>
+    <string name="amount">Total Amount</string>
+    <string name="pctg">%</string>
+    <string name="deft_entry">6</string>
+    <string name="currency">USD</string>
+    <string name="settime">"Current time"</string>
+    <string name="bftax">tips</string>
+    <string name="ttlamt">Total Amount</string>
+    <string name="calculate">Calculate!</string>
+    <string name="clear">Clear</string>
+    <string name="tipCaclTitle">How Much Should I Pay?</string>
+    <string name="tipsrate">Tips Rate</string>
+    <string name="pctg_tips">%</string>
+    <string name="draw_word">You can guess the word</string>
+    <string-array name="action">
+    	<item>15%</item>
+    	<item>20%</item>
+    	<item>25%</item>
+    	<item>30%</item>
+    </string-array>
+    <string-array name="charNumber">
+    	<item>3</item>
+    	<item>4</item>
+    	<item>5</item>
+    	<item>6</item>
+    	<item>7</item>
+    	<item>8</item>
+    	<item>9</item>
+    </string-array>
+    	<string name="defaultAmount">0</string>
+    	<string name="drawWords">Draw Word</string>
+    	<string name="listChar">Character List</string>
+    	<string name="wordCount">"Count "</string>
+    	<string name="getResult">I feel lucky!</string>
+</resources>
